@@ -233,8 +233,6 @@ const uint8_t GT911_Cfg[] =
 #define GT_CMD_WR 		0X28
 #define GT_CMD_RD 		0X29
 
-#define SLAVE_Write_Address 0X28
-
 //GT9147
 #define GT_CTRL_REG 	        0X8040
 #define GT_CFGS_REG 	        0X8047

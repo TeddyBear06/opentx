@@ -304,6 +304,10 @@ uint8_t GT911_Send_Cfg(uint8_t mode)
 uint8_t gt911WriteRegister(uint16_t reg, uint8_t * buffer, uint8_t length)
 {
   uint8_t tryCount = 3;
+
+  I2C_SendData(I2C, GT_CMD_WR);     //send cmd
+  I2C_SendData(I2C, reg >> 8);      //send hi
+  I2C_SendData(I2C, reg & 0XFF);    //send low
   while (!touch_i2c_write(TOUCH_I2C_ADDRESS, reg, buffer, length)) {
     if (--tryCount == 0) break;
     I2C_Init();
@@ -315,6 +319,10 @@ uint8_t gt911WriteRegister(uint16_t reg, uint8_t * buffer, uint8_t length)
 uint8_t gt911ReadRegister(uint16_t reg, uint8_t * buffer, uint8_t length)
 {
   uint8_t tryCount = 3;
+  I2C_SendData(I2C, GT_CMD_WR);     //send cmd
+  I2C_SendData(I2C, reg >> 8);      //send hi
+  I2C_SendData(I2C, reg & 0XFF);    //send low
+  I2C_SendData(I2C, GT_CMD_RD);
   while (!touch_i2c_read(TOUCH_I2C_ADDRESS, reg, buffer, length)) {
     if (--tryCount == 0) break;
     I2C_Init();
