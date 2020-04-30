@@ -658,6 +658,8 @@
   #define TOUCH_INT_EXTI_PortSource       EXTI_PortSourceGPIOH
   #define TOUCH_INT_EXTI_PinSource1       EXTI_PinSource2
 
+  #define TOUCH_I2C_ADDRESS               0x28
+
   #define TOUCH_INT_STATUS()              (GPIO_ReadInputDataBit(TOUCH_INT_GPIO, TOUCH_INT_GPIO_PIN))
 #else
   #define TOUCH_INT_RCC_AHB1Periph        0

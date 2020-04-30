@@ -32,8 +32,9 @@ void touchPanelDeInit();
 extern uint8_t touchGT911Flag;
 extern uint8_t touchPanelEvent;
 
-uint8_t gt911WriteRegister(uint16_t reg, uint8_t * buf, uint8_t len);
-void gt911ReadRegister(uint16_t reg, uint8_t * buf, uint8_t len);
+uint8_t gt911ReadRegister(uint16_t reg, uint8_t * buffer, uint8_t length);
+uint8_t gt911WriteRegister(uint16_t reg, uint8_t * buffer, uint8_t length);
+
 void touchPanelRead();
 
 #define GT911_MAX_TP      5
@@ -290,7 +291,5 @@ extern struct TouchData touchData;
 
 #define I2C_SDA_L()   do { I2C_GPIO->BSRRH = I2C_SDA_GPIO_PIN; } while(0)
 #define I2C_SDA_H()   do { I2C_GPIO->BSRRL = I2C_SDA_GPIO_PIN; } while(0)
-
-#define READ_SDA GPIO_ReadInputDataBit(I2C_GPIO, I2C_SDA_GPIO_PIN)
 
 #endif // _FT5X06_H_
